@@ -3,10 +3,10 @@
 #  docker run -p 80 -p 389 -e LDAP_DOMAIN="test.com" \
 #	-e LDAP_ORGANISATION="Acme widgets, inc." \
 #	-e LDAP_ADMIN_PASSWORD="secret" \
-#	-e LDAP_LOG_LEVEL=0 -d <id>
-
+#	-e LDAP_LOG_LEVEL=0 -d lockie/users-storage
 
 FROM phusion/baseimage:0.9.16
+MAINTAINER Andrew Kravchuk <awkravchuk@gmail.com>
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]

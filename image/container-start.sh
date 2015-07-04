@@ -2,7 +2,7 @@
 set -e
 
 # database is uninitialized
-if [ ! -e /var/lib/ldap/docker_bootstrapped ]; then
+if [ ! -e /etc/ldap/docker_bootstrapped ]; then
 	cat <<EOF | debconf-set-selections
 slapd slapd/internal/generated_adminpw password ${LDAP_ADMIN_PASSWORD}
 slapd slapd/internal/adminpw password ${LDAP_ADMIN_PASSWORD}
@@ -35,6 +35,6 @@ EOF
 	chown -R openldap:openldap /var/lib/ldap/
 	chown -R www-data:www-data /var/lib/nginx
 
-	touch /var/lib/ldap/docker_bootstrapped
+	echo 1 > /etc/ldap/docker_bootstrapped
 fi
 
